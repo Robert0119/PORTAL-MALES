@@ -1,0 +1,49 @@
+{% extends 'noticias/base.html' %}
+
+{% block title %}Editar Noticia{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center mb-4">Editar Noticia</h2>
+
+            <div class="card">
+                <div class="card-body">
+                    <form action="/editarDatos/{{ noticia.id }}/" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <!-- Campo del Título -->
+                        <div class="mb-3">
+                            <label class="form-label">Título</label>
+                            <input type="text" name="titulo" class="form-control" value="{{ noticia.titulo }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Contenido</label>
+                            <textarea name="contenido" class="form-control" required>{{ noticia.contenido }}</textarea>
+                        </div>
+
+                        <!-- Imagen actual mostrada si existe -->
+                        {% if noticia.imagen %}
+                            <div class="mb-3 text-center">
+                                <label class="form-label">Imagen Actual</label><br>
+                                <img src="{{ noticia.imagen.url }}" alt="Imagen Actual" style="max-width:100%; height:auto; border-radius:8px;">
+                            </div>
+                        {% endif %}
+
+                        <!-- Campo para subir nueva imagen -->
+                        <div class="mb-3">
+                            <input type="file" name="imagen" class="form-control">
+                            <small class="form-text text-muted">Si no seleccionas una nueva imagen, se conservará la imagen actual.</small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Guardar cambios</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

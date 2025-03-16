@@ -164,9 +164,14 @@ header{
     font-weight: 300;
  }
 
+ 
+
 /*articulos*/
 
 /* Sección de noticias */
+
+
+
 .container {
     max-width: 1200px;
 }
@@ -189,6 +194,111 @@ header{
 .btn-secondary:hover {
     background-color: #5a6268;
 }
+
+/*REDES */
+.container-redes{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-redes a{
+    margin-top: 4px;
+}
+
+.container-redes img{
+    width: 60px;
+    padding: 4px;
+    background: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    border-radius: 100%;
+    transition: all 300ms;
+    transition: all.4s ease-in-out;
+}
+
+.container-redes a:hover img{
+    background: rgba(0, 0, 0, 0.10);
+    border-radius: 100%;
+    transform: scale(1.2);
+}
+
+/*FOOTER*/
+
+.container-footer{
+    width: 100%;
+    padding: 40px 0px;
+    border: #f7f7f7;
+    margin-top: 40px;
+}
+
+.container-footer footer{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.container-footer footer .logo-footer{
+    text-align: center;
+}
+
+.container-footer footer .logo-footer img{
+    width: 100px;
+    
+}
+.container-footer footer .redes-footer{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.container-footer footer .redes-footer .icon-redes-footer{
+    font-size: 20px;
+    margin: 20px;
+    background: #f7f7f7;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    color: #a2a2a2;
+    transition: all.4s ease-in-out;
+}
+
+.container-footer footer .redes-footer .fa-facebook:hover{
+    background: #41579A;
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.container-footer footer .redes-footer .fa-instagram:hover{
+    background: linear-gradient(to top right, #FCDE30, #E9712A, #D2313D, #AE4198, #7540A1, #5443A8);
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.container-footer footer .redes-footer .fa-google-plus:hover{
+    background: #DE4C34;
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.container-footer footer hr{
+    margin-top: 20px;
+    border: none;
+    height: 2px;
+    background: #d4d0d0;
+}
+
+.container-footer h4{
+    text-align: center;
+    margin-top: 20px;
+    color: #666363;
+    font-weight: 500;
+}
+
 
 
  

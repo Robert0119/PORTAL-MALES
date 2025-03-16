@@ -11,16 +11,27 @@
 
 <div class="container mt-5">
     <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Volver</a>
+
     <div class="card">
-        {% if noticia.imagen %}
-        <img src="{{ noticia.imagen.url }}" class="card-img-top" alt="{{ noticia.titulo }}">
-        {% endif %}
         <div class="card-body">
-            <h2 class="card-title">{{ noticia.titulo }}</h2>
+            <!-- Título centrado -->
+            <h2 class="card-title text-center mb-4">{{ noticia.titulo }}</h2>
+
+            <!-- Contenido del texto -->
             <p class="card-text">{{ noticia.contenido }}</p>
-            <p class="text-muted">Publicado el {{ noticia.fecha_publicacion }}</p>
+
+            <!-- Imagen en tamaño más pequeño y centrada -->
+            {% if noticia.imagen %}
+                <div class="text-center my-4">
+                    <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" style="max-width: 60%; height: auto; border-radius: 8px;">
+                </div>
+            {% endif %}
+
+            <!-- Fecha al final centrada y en estilo secundario -->
+            <p class="text-muted text-center">Publicado el {{ noticia.fecha_publicacion }}</p>
         </div>
     </div>
+
 </div>
 
 </body>

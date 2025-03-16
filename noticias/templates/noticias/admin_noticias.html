@@ -1,0 +1,71 @@
+{% extends 'noticias/base.html' %}
+
+{% block title %}Gestión de Datos{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Formulario (Columna Izquierda) -->
+        <div class="col-md-5">
+            <h2>Añadir Datos</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/registrarDatos/" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <input type="text" name="titulo" class="form-control" placeholder="Título" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="contenido" class="form-control" placeholder="Contenido" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="file" name="imagen" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Noticias (Columna Derecha) -->
+        <div class="col-md-7">
+            <h2>Listado de Noticias</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Imagen</th>
+                            <th>Contenido</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for noticia in noticias %}
+                        <tr>
+                            <td>{{ noticia.titulo }}</td>
+                            <td>
+                                {% if noticia.imagen %}
+                                    <img src="{{ noticia.imagen.url }}" width="80">
+                                {% else %}
+                                    No hay imagen
+                                {% endif %}
+                            </td>
+                            <td>{{ noticia.contenido|truncatewords:10 }}</td>
+                            <td>
+                                <a href="/editarDatos/{{ noticia.id }}/" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="/eliminarDatos/{{ noticia.id }}/" class="btn btn-danger btn-sm">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">No hay noticias disponibles.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
